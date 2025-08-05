@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PathoLens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+    .container {
+      margin-top: 8%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .form-control {
+      background-color: #ffffff10;
+      color: white;
+      border: 1px solid white;
+    }
+    .btn-custom {
+      background-color: #ffffff20;
+      color: white;
+      border: 1px solid white;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: white;
+      color: #764ba2;
+      font-weight: 600;
+    }
+    .result-box {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 1.3rem;
+      background-color: #ffffff20;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧬PathoLens</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload a blood smear image:</label>
+        <input type="file" name="image" class="form-control" required>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-custom">🧪 Predict</button>
+      </div>
+    </form>
+
+    {% if prediction %}
+    <div class="result-box">
+      <strong>Result:</strong> {{ prediction }}
+    </div>
+    {% endif %}
+  </div>
+
+  <footer>
+    Smart pathology assistant
+  </footer>
+</body>
+</html>
