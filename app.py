@@ -35,5 +35,10 @@ def upload():
     label = predict(image)
     return render_template('index.html', prediction=label)
 
+@app.route('/')
+def home():
+    return "PathoLens is running!"
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # default to 5000
+    app.run(debug=True, host='0.0.0.0', port=port)  # ← KEY FIX
