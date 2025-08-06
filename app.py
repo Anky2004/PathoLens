@@ -35,9 +35,7 @@ def upload():
     label = predict(image)
     return render_template('index.html', prediction=label)
 
-@app.route('/')
-def home():
-    return "PathoLens is running!"
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # default to 5000
